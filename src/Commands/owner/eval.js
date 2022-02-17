@@ -9,7 +9,7 @@ module.exports = class extends Command {
     }
     async run(ctx) {
  if (ctx.message.author.id !== "382612768924368906")
-    return message.reply('you are not linux bot dev :pensive:');
+    return ctx.reply('you are not linux bot dev :pensive:');
   try {
     let codein = ctx.args.join(' ');
     let code = eval(codein);
