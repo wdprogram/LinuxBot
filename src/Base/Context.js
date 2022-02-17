@@ -40,7 +40,4 @@ module.exports = class {
      async reply(...options) {
         this.message.reply(...options);
     }
-       async sendAttachment(buffers, message = undefined) {
-        return this.channel.send(message, { attachments: buffers });
-    };
 };
