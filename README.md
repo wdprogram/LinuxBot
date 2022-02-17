@@ -1,3 +1,15 @@
-# LinuxBot
+# Linux Discord Bot
+Complete bot website.
 
-Test the webhook
+# Planned things
+- [ ] Ctx
+- [ ] CommandHandler
+- [ ] Responds
+- [ ] EventLoader
+- [ ] Test Command
+- [ ] Bot Website
+- [ ] Guild Commands
+- [ ] Permissions
+- [ ] Compiler
+- [ ] Database System
+
