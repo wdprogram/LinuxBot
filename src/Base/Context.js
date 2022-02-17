@@ -27,9 +27,20 @@ module.exports = class {
             : this.args.filter((e) => !e.startsWith('--'));
 
         this.responds = responds;
+        this.user = message.guild.me.user || null;
+        this.me = message.guild.me || null;
+        this.member = message.member || null;
+    
     }
 
     async send(...options) {
         this.message.channel.send(...options);
     }
+
+     async reply(...options) {
+        this.message.reply(...options);
+    }
+       async sendAttachment(buffers, message = undefined) {
+        return this.channel.send(message, { attachments: buffers });
+    };
 };
