@@ -7,13 +7,13 @@ module.exports = class extends Command {
         });
     }
     async run(ctx) {
-        if (ctx.message.author.id !== '382612768924368906')
+        if (!ctx.devs.ids.includes(ctx.message.author.id))
             return ctx.reply(ctx.responds.eval.devError);
         try {
             let codein = ctx.args.join(' ');
-            let code = eval(codein);
             if (!codein) return;
-            code = eval(code);
+            let code = eval(codein);
+            // code = eval(code);
             if (typeof code !== 'string')
                 code = require('util').inspect(code, { depth: 0 });
             let embed = new Discord.MessageEmbed()
@@ -28,5 +28,3 @@ module.exports = class extends Command {
         }
     }
 };
-
-}; 

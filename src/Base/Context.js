@@ -6,7 +6,7 @@ module.exports = class {
     /**
      *
      * @param {Message} message
-     * @param {String} prefix
+     * @param {String|null} prefix
      * @param {boolean} sub
      */
     constructor(message, prefix, args, sub = false) {
@@ -28,16 +28,25 @@ module.exports = class {
 
         this.responds = responds;
         this.user = message.guild.me.user || null;
-        this.me = message.guild.me || null;
         this.member = message.member || null;
-    
+
+        this.devs = {
+            ids: [
+                '377189739759140865',
+                '407486004505870336',
+                '382612768924368906',
+            ],
+            tags: ['Okeanos#0017', 'renata#1000'],
+        };
     }
 
     async send(...options) {
-        this.message.channel.send(...options);
+        const msg = await this.message.channel.send(...options);
+        return msg;
     }
 
-     async reply(...options) {
-        this.message.reply(...options);
+    async reply(...options) {
+        const msg = await this.message.reply(...options);
+        return msg;
     }
 };

@@ -14,5 +14,9 @@ module.exports = class {
         this.bot.on('messageCreate', async (message) => {
             await CommandExecute(message);
         });
+
+        this.bot.on('messageUpdate', async (_, message) => {
+            await CommandExecute(message);
+        });
     }
 };

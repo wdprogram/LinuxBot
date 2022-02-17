@@ -8,20 +8,34 @@ const Context = require('../Base/Context');
 module.exports = async (message) => {
     if (message.author.bot) return;
 
-    const prefix = process.env.PREFIX;
+    let prefix = process.env.PREFIX;
     const { commands, aliases } = message.client;
 
+    let isDev = false;
+
+    if (
+        [
+            '377189739759140865',
+            '407486004505870336',
+            '382612768924368906',
+        ].includes(message.author.id)
+    )
+        isDev = true;
+
+    if (message.content.startsWith(prefix) === false && !isDev) return;
+    if (!message.content.startsWith(prefix) && isDev) prefix = null;
+
     let commandName = null;
-    const splitedContent = message.content.slice(prefix.length).split(/ +/g);
+    const splitedContent = prefix
+        ? message.content.slice(prefix.length).split(/\s+/g)
+        : message.content.split(/\s+/g);
     if (splitedContent[0] === '') splitedContent.shift();
-    commandName = splitedContent[0];
-    splitedContent.shift();
+    commandName = splitedContent.shift();
     let command = null;
 
-    if (commands.has(commandName)) command = commands.get(commandName);
-    else if (aliases.has(commandName))
-        command = commands.get(aliases.get(commandName));
-    else return;
+    command =
+        commands.get(commandName) || commands.get(aliases.get(commandName));
+    if (!command) return;
 
     try {
         let context = new Context(message, prefix, splitedContent);
