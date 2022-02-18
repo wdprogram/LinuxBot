@@ -13,17 +13,16 @@ module.exports = class extends Command {
             let codein = ctx.args.join(' ');
             if (!codein) return;
             let code = eval(codein);
-            // code = eval(code);
             if (typeof code !== 'string')
                 code = require('util').inspect(code, { depth: 0 });
             let embed = new Discord.MessageEmbed()
                 .setTitle('Output')
-                .setDescription(`\`\`\`js\n${code}\n\`\`\``);
+                .setDescription(`\`\`\`js\n${code.slice(0, 2000 - 12)}\n\`\`\``);
             ctx.reply({ embeds: [embed] });
         } catch (e) {
             let embed = new Discord.MessageEmbed()
                 .setTitle('Error')
-                .setDescription(`\`\`\`js\n${e}\n\`\`\``);
+                .setDescription(`\`\`\`js\n${e.slice(0, 2000 - 12)}\n\`\`\``);
             ctx.reply({ embeds: [embed] });
         }
     }
