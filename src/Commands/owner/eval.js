@@ -4,6 +4,9 @@ module.exports = class extends Command {
     constructor() {
         super({
             name: 'eval',
+            permissions: {
+                ownerOnly: true,
+            },
         });
     }
     async run(ctx) {
