@@ -22,7 +22,7 @@ module.exports = class extends Command {
         } catch (e) {
             let embed = new Discord.MessageEmbed()
                 .setTitle('Error')
-                .setDescription(`\`\`\`js\n${e.slice(0, 2000 - 12)}\n\`\`\``);
+                .setDescription(`\`\`\`js\n${e}\n\`\`\``);
             ctx.reply({ embeds: [embed] });
         }
     }
