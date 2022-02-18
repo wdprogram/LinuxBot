@@ -37,6 +37,8 @@ module.exports = async (message) => {
         commands.get(commandName) || commands.get(aliases.get(commandName));
     if (!command) return;
 
+    if (command.permissions.ownerOnly && !isDev) return;
+
     try {
         let context = new Context(message, prefix, splitedContent);
         if (command.subCommands.length >= 1) {

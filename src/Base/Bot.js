@@ -16,8 +16,8 @@ module.exports = class extends Client {
     }
 
     async start(token) {
-        this.login(token);
         this.commandHandler.init();
         await new Events(this).init();
+        this.login(token);
     }
 };

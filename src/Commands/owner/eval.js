@@ -7,8 +7,6 @@ module.exports = class extends Command {
         });
     }
     async run(ctx) {
-        if (!ctx.devs.ids.includes(ctx.message.author.id))
-            return ctx.reply(ctx.responds.eval.devError);
         try {
             let codein = ctx.args.join(' ');
             if (!codein) return;
@@ -17,7 +15,9 @@ module.exports = class extends Command {
                 code = require('util').inspect(code, { depth: 0 });
             let embed = new Discord.MessageEmbed()
                 .setTitle('Output')
-                .setDescription(`\`\`\`js\n${code.slice(0, 2000 - 12)}\n\`\`\``);
+                .setDescription(
+                    `\`\`\`js\n${code.slice(0, 2000 - 12)}\n\`\`\``,
+                );
             ctx.reply({ embeds: [embed] });
         } catch (e) {
             let embed = new Discord.MessageEmbed()
