@@ -4,14 +4,7 @@ module.exports = class extends Command {
     constructor() {
         super({
             name: 'ping',
-            subCommands: [
-                {
-                    name: 'test',
-                    run: (ctx) => {
-                        ctx.send('Test');
-                    },
-                },
-            ],
+            description: "Sends bot's websocket ping",
         });
     }
 

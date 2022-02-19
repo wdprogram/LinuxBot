@@ -63,7 +63,7 @@ module.exports = class {
         const obj = {
             title: '',
             description: '',
-            color: '',
+            color: null,
             timestamp: null,
             fields: [],
             author: {},
