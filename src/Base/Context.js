@@ -1,4 +1,4 @@
-const { Message } = require('discord.js');
+const { Message, MessageEmbedOptions } = require('discord.js');
 const Bot = require('./Bot');
 const responds = require('./Responds');
 
@@ -48,5 +48,37 @@ module.exports = class {
     async reply(...options) {
         const msg = await this.message.reply(...options);
         return msg;
+    }
+
+    /**
+     *
+     * @param {MessageEmbedOptions} options
+     * @param {String} type
+     * @returns {MessageEmbedOptions}
+     */
+    async sendEmbed(options, type) {
+        /**
+         * @type {MessageEmbedOptions}
+         */
+        const obj = {
+            title: '',
+            description: '',
+            color: '',
+            timestamp: null,
+            fields: [],
+            author: {},
+            thumbnail: {},
+            image: {},
+            video: {},
+            footer: {},
+        };
+
+        Object.assign(obj, options);
+
+        if (type === 'err') obj.color = 'RED';
+        else if (type === 'warn') obj.color = 'ORANGE';
+        else if (type === 'succ') obj.color = 'GREEN';
+
+        return this.send({ embeds: [obj] });
     }
 };

@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const Command = require('../../Base/Command');
 const Context = require('../../Base/Context');
 
@@ -44,13 +43,13 @@ module.exports = class extends Command {
         if (Boolean(isCommand)) {
             return ctx.send({
                 embeds: [
-                    new MessageEmbed({
+                    {
                         description: `\`\`\`json\n${JSON.stringify(
                             isCommand,
                             null,
                             2,
                         )}\`\`\``,
-                    }),
+                    },
                 ],
             });
         }
