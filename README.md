@@ -11,6 +11,5 @@ Complete bot website.
 - [ ] Bot Website
 - [ ] Guild Commands
 - [ ] Permissions
-- [ ] Compiler
 - [ ] Database System
 
